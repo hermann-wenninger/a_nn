@@ -1,7 +1,7 @@
 import numpy as np
 
 # Step 1: Data Preparation
-def generate_data(num_samples=1000):
+def generate_data(num_samples=110):
     X = np.random.randint(0, 2, (num_samples, 10))  # Binary data (0 or 1)
     y = np.array([1 if '1111' in ''.join(map(str, x)) else 0 for x in X])  # 1 if four 1s in a row
     print([X  , y])
@@ -59,7 +59,7 @@ class SimpleNeuralNet:
         self.weights_hidden -= learning_rate * x.T.dot(hidden_delta)
         self.bias_hidden -= learning_rate * np.sum(hidden_delta, axis=0, keepdims=True)
 
-    def train(self, X, y, epochs=1000, learning_rate=0.001):
+    def train(self, X, y, epochs=100, learning_rate=0.01):
         for epoch in range(epochs):
             self.forward(X)
             self.backward(X, y, learning_rate)

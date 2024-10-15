@@ -77,7 +77,7 @@ class NeuralNetwork:
 #generiere trainings daten
 def generate_training_data():
     training_data = []
-    for _ in range(1000):
+    for _ in range(110):
         inputs = [random.choice([0, 1]) for _ in range(10)]
         target = 1.0 if any(inputs[i:i+4] == [1, 1, 1, 1] for i in range(7)) else 0.0
         training_data.append((inputs, target))
@@ -88,7 +88,7 @@ def generate_training_data():
 nn = NeuralNetwork(input_size=10, hidden_sizes=[12, 6], learning_rate=0.01)
 training_data = generate_training_data()
 
-for epoch in range(2000):
+for epoch in range(500):
     for inputs, target in training_data:
         nn.train(inputs, target)
 
